@@ -4,8 +4,8 @@ After=network.target
 After=dbus.service
 
 [Service]
-User=udooer
-Group=udooer
+User=bluepi
+Group=bluepi
 WorkingDirectory=/opt/infotainment
 ExecStart=/usr/bin/python3 -u infotainment.py
 

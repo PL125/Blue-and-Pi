@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Creating new user: bluepi"
+adduser bluepi
 if grep -Fxq "@audio - rtprio 99" /etc/security/limits.conf
 then
     echo "Security limits already set, skipping"
@@ -8,8 +10,8 @@ else
     echo @audio - rtprio 99 >> /etc/security/limits.conf
     echo @audio - nice -19 >> /etc/security/limits.conf
     echo @audio - memlock unlimited >> /etc/security/limits.conf
-    echo udooer - nice -11 >> /etc/security/limits.conf
-    echo udooer - rtprio 9 >> /etc/security/limits.conf
+    echo bluepi - nice -11 >> /etc/security/limits.conf
+    echo bluepi - rtprio 9 >> /etc/security/limits.conf
 fi
 
 if [ ! -f /etc/pulse/original.pa ]; then
@@ -18,18 +20,18 @@ if [ ! -f /etc/pulse/original.pa ]; then
 fi
 cp /etc/pulse/infotainment.pa /etc/pulse/default.pa
 
-if [ -d /home/udooer/.pulse ]; then
+if [ -d /home/bluepi/.pulse ]; then
     echo "Pulseaudio realtime configuration already set, skipping"
 else
     echo "Setting pulseaudio realtime configuration..."
-    install -g udooer -o udooer -d /home/udooer/.pulse
-    echo high-priority = yes       >> /home/udooer/.pulse/daemon.conf
-    echo rlimit-nice = 31          >> /home/udooer/.pulse/daemon.conf
-    echo nice-level = -11          >> /home/udooer/.pulse/daemon.conf
-    echo realtime-scheduling = yes >> /home/udooer/.pulse/daemon.conf
-    echo rlimit-rtprio = 9         >> /home/udooer/.pulse/daemon.conf
-    echo realtime-priority = 9     >> /home/udooer/.pulse/daemon.conf
-    chown udooer:udooer /home/udooer/.pulse/daemon.conf
+    install -g bluepi -o bluepi -d /home/bluepi/.pulse
+    echo high-priority = yes       >> /home/bluepi/.pulse/daemon.conf
+    echo rlimit-nice = 31          >> /home/bluepi/.pulse/daemon.conf
+    echo nice-level = -11          >> /home/bluepi/.pulse/daemon.conf
+    echo realtime-scheduling = yes >> /home/bluepi/.pulse/daemon.conf
+    echo rlimit-rtprio = 9         >> /home/bluepi/.pulse/daemon.conf
+    echo realtime-priority = 9     >> /home/bluepi/.pulse/daemon.conf
+    chown bluepi:bluepi /home/bluepi/.pulse/daemon.conf
 fi
 
 

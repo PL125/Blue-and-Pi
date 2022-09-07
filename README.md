@@ -24,8 +24,16 @@ Most of the infotainment related CAN frames have been decoded:
  * debug menu on the instrument panel display
 
 ### Build deb package
-Create the package from the source using dpkg-buildpackage -us -uc
+
+* build-essential debhelper dh-systemd are needed.
+
+* Rasperry Pi OS doesn't have dh-systemd but the package is platform agnostic, so you can get the [Debian version](https://packages.debian.org/buster/all/dh-systemd/download) and install that.
+
+* Create the package from the source using dpkg-buildpackage -us -uc
  
-build-essential debhelper dh-systemd are needed.
+
+
+
+
 
 
