@@ -22,3 +22,10 @@ Most of the infotainment related CAN frames have been decoded:
  * Media Player, Voice, Phone, Navigation, FM radio audio channels
  * Bluetooth A2DP and HFP/HSP support
  * debug menu on the instrument panel display
+
+### Build deb package
+Create the package from the source using dpkg-buildpackage -us -uc
+ 
+build-essential debhelper dh-systemd are needed.
+
+
